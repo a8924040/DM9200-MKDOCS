@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>UDPCommand - LinuxGateway Command</title>
+	<title>IR_HTTP_Command - LinuxGateway Command</title>
 
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -51,13 +51,13 @@
             
             
                 <li >
-                    <a href="..">Home</a>
+                    <a href="..">UDPCommand</a>
                 </li>
             
             
             
                 <li class="active">
-                    <a href="./">UDPCommand</a>
+                    <a href="./">IR_HTTP_Command</a>
                 </li>
             
             
@@ -111,7 +111,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#welcome-to-mkdocs">Welcome to MkDocs</a></li>
+        <li class="main active"><a href="#_1">流程</a></li>
         
             <li><a href="#commands">Commands</a></li>
         
@@ -122,8 +122,27 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="http://mkdocs.org">mkdocs.org</a>.</p>
+<h1 id="_1">流程</h1>
+<pre><code class="json">    下逹 command 至 Gateway 
+    +--------+       +----------------------------+  
+    |        |       | 更新 command JSON          |  
+    | Mobile +-----&gt; | update_command_encode.php  |  
+    +--------+       +----------------------------+  
+
+    Gateway 接收 comamnd :  
+    Gate先利用show_command_timestamp.php 取得command 更新時間,  
+    若時間較新再利用show_command_encode.php 取得對Gateway所下逹命令,若時間就舊則不處理  
+
+    +---------+   +----------------------------+           +---------+   +------------------------+  
+    |         |   | 取得 command 下逹時間       | 時間較新   |         |   | 取得 command JSON      |  
+    | Gateway |--&gt;| show_command_timestamp.php |---------&gt; | Gateway |--&gt;| show_command_encode.php|  
+    +---------+   +-------+--------------------+           +---------+   +------------------------+        
+                                               |  時間較舊 +---------+  
+                                               +---------&gt; |  無動作 |  
+                                                           | Gateway |  
+                                                           +---------+  
+</code></pre>
+
 <h2 id="commands">Commands</h2>
 <ul>
 <li><code>mkdocs new [dir-name]</code> - Create a new project.</li>

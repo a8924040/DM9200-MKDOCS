@@ -1,7 +1,7 @@
 site_name: LinuxGateway Command
 pages:
-    - Home: index.md
-    - UDPCommand: UDP_Command.md
+    - UDPCommand: index.md 
+    - IR_HTTP_Command: IR_Command.md
     - IRCOMMAND:
       - aaaa: IR_command1.md
       - 2222: IR_command2.md
