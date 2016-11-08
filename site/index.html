@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+	<title>LinuxGateway Command</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">LinuxGateway Command</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">Home</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="UDP_Command/">UDPCommand</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">IRCOMMAND <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="IR_command1/">aaaa</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="IR_command2/">2222</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="UDP_Command/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#udp-command">UDP Command</a></li>
+        
+            <li><a href="#command-1">Command 1</a></li>
+        
+            <li><a href="#command-2">Command 2</a></li>
+        
+            <li><a href="#command-3">Command 3</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="udp-command">UDP Command</h1>
+<ul>
+<li><code>command  0</code> - 列印出資料庫裡的DEVICE &amp; LINK 表.</li>
+<li><code>command  1</code> - 開啟 M02(Zigbee Module) JOIN 功能60秒.</li>
+<li><code>command  2</code> - 綁定帳號.</li>
+<li><code>command  3</code> - 註冊新帳號.</li>
+<li><code>command  4</code> - 確認碼輸入.</li>
+<li><code>command  5</code> - 解除綁定.</li>
+<li><code>command  6</code> - 進入IRM-201(IR Module) 學習功能.</li>
+<li><code>command  7</code> - 退出IRM-2-1(IR Module) 學習功能.</li>
+<li><code>command  8</code> - IRM-201(IR Module) 控制協定.</li>
+<li><code>command  9</code> - 啟動OTA功能.</li>
+<li><code>command 10</code> - 掃描無線網路(WIFI SCAN).</li>
+<li><code>command 11</code>  - 保留.</li>
+<li><code>command 12</code>  - 查詢CID.</li>
+<li><code>command 13</code>  - 設定無線網路(WIFI SETTING).</li>
+<li><code>command 14</code>  - 查詢CID及IP.</li>
+<li><code>command 15</code>  - 忘記密碼，進行密碼修改.</li>
+<li><code>command 16</code>  - 輸入驗證碼及新的密碼.</li>
+<li><code>command 17</code>  - 刪除ZIGBEE裝置.</li>
+<li><code>command 18</code>  - 將WIFI設定為AP MODE.</li>
+<li><code>command 19</code>  - 將WIFI設定為STA MODE.</li>
+</ul>
+<h2 id="command-1">Command 1</h2>
+<pre><code>{"command":"1"}
+mkdocs.yml    # The configuration file.
+docs/
+    index.md  # The documentation homepage.
+    ...       # Other markdown pages, images and other files.
+</code></pre>
+<h2 id="command-2">Command 2</h2>
+<pre><code>{
+"command":"2",
+"userid":"cynthiawang0418@gmail.com",
+"password":"12345678"
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>password</td>
+<td>NONE</td>
+<td>使用者密碼</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok</td>
+<td>NONE</td>
+<td>綁定成功</td>
+</tr>
+<tr>
+<td>no device</td>
+<td>NONE</td>
+<td>找無此機器(已被其他帳號綁定)</td>
+</tr>
+<tr>
+<td>error</td>
+<td>NONE</td>
+<td>密碼錯誤 或 帳號與密碼無法匹配</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-3">Command 3</h2>
+<pre><code>{
+"command":"3",
+"userid":"cynthiawang0418@gmail.com",
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok</td>
+<td>NONE</td>
+<td>執行成功</td>
+</tr>
+<tr>
+<td>user error</td>
+<td>NONE</td>
+<td>帳號存在</td>
+</tr>
+<tr>
+<td>device error</td>
+<td>NONE</td>
+<td>機器己綁定</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+        <script src="./js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

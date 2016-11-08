@@ -1,0 +1,89 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "UDP Command\n\n\n\n\ncommand  0\n - \u5217\u5370\u51fa\u8cc7\u6599\u5eab\u88e1\u7684DEVICE \n LINK \u8868.\n\n\ncommand  1\n - \u958b\u555f M02(Zigbee Module) JOIN \u529f\u80fd60\u79d2.\n\n\ncommand  2\n - \u7d81\u5b9a\u5e33\u865f.\n\n\ncommand  3\n - \u8a3b\u518a\u65b0\u5e33\u865f.\n\n\ncommand  4\n - \u78ba\u8a8d\u78bc\u8f38\u5165.\n\n\ncommand  5\n - \u89e3\u9664\u7d81\u5b9a.\n\n\ncommand  6\n - \u9032\u5165IRM-201(IR Module) \u5b78\u7fd2\u529f\u80fd.\n\n\ncommand  7\n - \u9000\u51faIRM-2-1(IR Module) \u5b78\u7fd2\u529f\u80fd.\n\n\ncommand  8\n - IRM-201(IR Module) \u63a7\u5236\u5354\u5b9a.\n\n\ncommand  9\n - \u555f\u52d5OTA\u529f\u80fd.\n\n\ncommand 10\n - \u6383\u63cf\u7121\u7dda\u7db2\u8def(WIFI SCAN).\n\n\ncommand 11\n  - \u4fdd\u7559.\n\n\ncommand 12\n  - \u67e5\u8a62CID.\n\n\ncommand 13\n  - \u8a2d\u5b9a\u7121\u7dda\u7db2\u8def(WIFI SETTING).\n\n\ncommand 14\n  - \u67e5\u8a62CID\u53caIP.\n\n\ncommand 15\n  - \u5fd8\u8a18\u5bc6\u78bc\uff0c\u9032\u884c\u5bc6\u78bc\u4fee\u6539.\n\n\ncommand 16\n  - \u8f38\u5165\u9a57\u8b49\u78bc\u53ca\u65b0\u7684\u5bc6\u78bc.\n\n\ncommand 17\n  - \u522a\u9664ZIGBEE\u88dd\u7f6e.\n\n\ncommand 18\n  - \u5c07WIFI\u8a2d\u5b9a\u70baAP MODE.\n\n\ncommand 19\n  - \u5c07WIFI\u8a2d\u5b9a\u70baSTA MODE.\n\n\n\n\nCommand 1\n\n\n{\"command\":\"1\"}\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.\n\n\n\nCommand 2\n\n\n{\n\"command\":\"2\",\n\"userid\":\"cynthiawang0418@gmail.com\",\n\"password\":\"12345678\"\n}\n\n\n\nRequired JSON Parameter\n\n\n\n\n\n\n\n\nParameter\n\n\nDefault\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nuserid\n\n\nNONE\n\n\n\u4f7f\u7528\u8005\u5e33\u865f\n\n\n\n\n\n\npassword\n\n\nNONE\n\n\n\u4f7f\u7528\u8005\u5bc6\u78bc\n\n\n\n\n\n\n\n\nResponse\n\n\n\n\n\n\n\n\nParameter\n\n\nDefault\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nok\n\n\nNONE\n\n\n\u7d81\u5b9a\u6210\u529f\n\n\n\n\n\n\nno device\n\n\nNONE\n\n\n\u627e\u7121\u6b64\u6a5f\u5668(\u5df2\u88ab\u5176\u4ed6\u5e33\u865f\u7d81\u5b9a)\n\n\n\n\n\n\nerror\n\n\nNONE\n\n\n\u5bc6\u78bc\u932f\u8aa4 \u6216 \u5e33\u865f\u8207\u5bc6\u78bc\u7121\u6cd5\u5339\u914d\n\n\n\n\n\n\n\n\nCommand 3\n\n\n{\n\"command\":\"3\",\n\"userid\":\"cynthiawang0418@gmail.com\",\n}\n\n\n\nRequired JSON Parameter\n\n\n\n\n\n\n\n\nParameter\n\n\nDefault\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nuserid\n\n\nNONE\n\n\n\u4f7f\u7528\u8005\u5e33\u865f\n\n\n\n\n\n\n\n\nResponse\n\n\n\n\n\n\n\n\nParameter\n\n\nDefault\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nok\n\n\nNONE\n\n\n\u57f7\u884c\u6210\u529f\n\n\n\n\n\n\nuser error\n\n\nNONE\n\n\n\u5e33\u865f\u5b58\u5728\n\n\n\n\n\n\ndevice error\n\n\nNONE\n\n\n\u6a5f\u5668\u5df1\u7d81\u5b9a", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#udp-command", 
+            "text": "command  0  - \u5217\u5370\u51fa\u8cc7\u6599\u5eab\u88e1\u7684DEVICE   LINK \u8868.  command  1  - \u958b\u555f M02(Zigbee Module) JOIN \u529f\u80fd60\u79d2.  command  2  - \u7d81\u5b9a\u5e33\u865f.  command  3  - \u8a3b\u518a\u65b0\u5e33\u865f.  command  4  - \u78ba\u8a8d\u78bc\u8f38\u5165.  command  5  - \u89e3\u9664\u7d81\u5b9a.  command  6  - \u9032\u5165IRM-201(IR Module) \u5b78\u7fd2\u529f\u80fd.  command  7  - \u9000\u51faIRM-2-1(IR Module) \u5b78\u7fd2\u529f\u80fd.  command  8  - IRM-201(IR Module) \u63a7\u5236\u5354\u5b9a.  command  9  - \u555f\u52d5OTA\u529f\u80fd.  command 10  - \u6383\u63cf\u7121\u7dda\u7db2\u8def(WIFI SCAN).  command 11   - \u4fdd\u7559.  command 12   - \u67e5\u8a62CID.  command 13   - \u8a2d\u5b9a\u7121\u7dda\u7db2\u8def(WIFI SETTING).  command 14   - \u67e5\u8a62CID\u53caIP.  command 15   - \u5fd8\u8a18\u5bc6\u78bc\uff0c\u9032\u884c\u5bc6\u78bc\u4fee\u6539.  command 16   - \u8f38\u5165\u9a57\u8b49\u78bc\u53ca\u65b0\u7684\u5bc6\u78bc.  command 17   - \u522a\u9664ZIGBEE\u88dd\u7f6e.  command 18   - \u5c07WIFI\u8a2d\u5b9a\u70baAP MODE.  command 19   - \u5c07WIFI\u8a2d\u5b9a\u70baSTA MODE.", 
+            "title": "UDP Command"
+        }, 
+        {
+            "location": "/#command-1", 
+            "text": "{\"command\":\"1\"}\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "title": "Command 1"
+        }, 
+        {
+            "location": "/#command-2", 
+            "text": "{\n\"command\":\"2\",\n\"userid\":\"cynthiawang0418@gmail.com\",\n\"password\":\"12345678\"\n}  Required JSON Parameter     Parameter  Default  Description      userid  NONE  \u4f7f\u7528\u8005\u5e33\u865f    password  NONE  \u4f7f\u7528\u8005\u5bc6\u78bc     Response     Parameter  Default  Description      ok  NONE  \u7d81\u5b9a\u6210\u529f    no device  NONE  \u627e\u7121\u6b64\u6a5f\u5668(\u5df2\u88ab\u5176\u4ed6\u5e33\u865f\u7d81\u5b9a)    error  NONE  \u5bc6\u78bc\u932f\u8aa4 \u6216 \u5e33\u865f\u8207\u5bc6\u78bc\u7121\u6cd5\u5339\u914d", 
+            "title": "Command 2"
+        }, 
+        {
+            "location": "/#command-3", 
+            "text": "{\n\"command\":\"3\",\n\"userid\":\"cynthiawang0418@gmail.com\",\n}  Required JSON Parameter     Parameter  Default  Description      userid  NONE  \u4f7f\u7528\u8005\u5e33\u865f     Response     Parameter  Default  Description      ok  NONE  \u57f7\u884c\u6210\u529f    user error  NONE  \u5e33\u865f\u5b58\u5728    device error  NONE  \u6a5f\u5668\u5df1\u7d81\u5b9a", 
+            "title": "Command 3"
+        }, 
+        {
+            "location": "/UDP_Command/", 
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "title": "UDPCommand"
+        }, 
+        {
+            "location": "/UDP_Command/#welcome-to-mkdocs", 
+            "text": "For full documentation visit  mkdocs.org .", 
+            "title": "Welcome to MkDocs"
+        }, 
+        {
+            "location": "/UDP_Command/#commands", 
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
+            "title": "Commands"
+        }, 
+        {
+            "location": "/UDP_Command/#project-layout", 
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "title": "Project layout"
+        }, 
+        {
+            "location": "/IR_command1/", 
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "title": "aaaa"
+        }, 
+        {
+            "location": "/IR_command1/#welcome-to-mkdocs", 
+            "text": "For full documentation visit  mkdocs.org .", 
+            "title": "Welcome to MkDocs"
+        }, 
+        {
+            "location": "/IR_command1/#commands", 
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
+            "title": "Commands"
+        }, 
+        {
+            "location": "/IR_command1/#project-layout", 
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "title": "Project layout"
+        }, 
+        {
+            "location": "/IR_command2/", 
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "title": 2222
+        }, 
+        {
+            "location": "/IR_command2/#welcome-to-mkdocs", 
+            "text": "For full documentation visit  mkdocs.org .", 
+            "title": "Welcome to MkDocs"
+        }, 
+        {
+            "location": "/IR_command2/#commands", 
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
+            "title": "Commands"
+        }, 
+        {
+            "location": "/IR_command2/#project-layout", 
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "title": "Project layout"
+        }
+    ]
+}
