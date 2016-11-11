@@ -113,9 +113,13 @@
     
         <li class="main active"><a href="#_1">流程</a></li>
         
-            <li><a href="#commands">Commands</a></li>
+            <li><a href="#key">學習KEY的步驟</a></li>
         
-            <li><a href="#project-layout">Project layout</a></li>
+            <li><a href="#_2">退出學習的步驟</a></li>
+        
+            <li><a href="#key_1">執行KEY的步驟</a></li>
+        
+            <li><a href="#key_2">儲存KEY資訊</a></li>
         
     
     </ul>
@@ -130,7 +134,7 @@
     +--------+       +----------------------------+  
 
     Gateway 接收 comamnd :  
-    Gate先利用show_command_timestamp.php 取得command 更新時間,  
+    Gateway先利用show_command_timestamp.php 取得command 更新時間,  
     若時間較新再利用show_command_encode.php 取得對Gateway所下逹命令,若時間就舊則不處理  
 
     +---------+   +----------------------------+           +---------+   +------------------------+  
@@ -143,18 +147,450 @@
                                                            +---------+  
 </code></pre>
 
-<h2 id="commands">Commands</h2>
+<h2 id="key">學習KEY的步驟</h2>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs help</code> - Print this help message.</li>
+<li><code>update_command_encode.php</code></li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+<pre><code class="json">   {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;info&quot;: 
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:6,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:1}
+                      }
+         }
+   }
+</code></pre>
+
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>cid</td>
+<td></td>
+<td>gateway ID</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>DM9200H</td>
+<td>目前系統時間(UTC)</td>
+</tr>
+<tr>
+<td>devicetype</td>
+<td>DM9200H</td>
+<td>目前只有DM9200H有IRM-201模組</td>
+</tr>
+<tr>
+<td>IRcommand</td>
+<td>NONE</td>
+<td>6:進入學習模式，7:退出學習模式，8執行按鍵功能</td>
+</tr>
+<tr>
+<td>KeySelect</td>
+<td>NONE</td>
+<td>KEY選擇(0-65)</td>
+</tr>
+<tr>
+<td>DeviceSelect</td>
+<td>NONE</td>
+<td>KEY DEVICE選擇(0-95)，每個DEVICE可以學習66個KEY</td>
+</tr>
+<tr>
+<td>handshake</td>
+<td>1</td>
+<td>交握旗標，用來判斷gateway是否否有正確執行IR COMMAND</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>已將COMMAND送到SERVER端</td>
+</tr>
+</tbody>
+</table>
+<p>Gateway收到IR Command後會將執行結果透過update_command_encode.php讓client端知道</p>
+<pre><code class="json">    {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;command&quot;:&quot;1&quot;,
+   &quot;timezone&quot;:&quot;+8&quot;,
+   &quot;info&quot;:
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:6,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:2}
+                      }
+         }
+   }
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>handshake 所代表的意義</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------2------------</td>
+<td>已進入學習模式，並已選擇要學習的KEY</td>
+</tr>
+<tr>
+<td>----------3------------</td>
+<td>當被學習的遙控器按鍵放開</td>
+</tr>
+<tr>
+<td>----------4------------</td>
+<td>學習失敗</td>
+</tr>
+<tr>
+<td>----------5------------</td>
+<td>成功離開學習</td>
+</tr>
+<tr>
+<td>----------6------------</td>
+<td>成功執行按鍵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">退出學習的步驟</h2>
+<ul>
+<li><code>update_command_encode.php</code></li>
+</ul>
+<pre><code class="json">   {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;info&quot;: 
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:7,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:1}
+                      }
+         }
+   }
+</code></pre>
+
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>cid</td>
+<td></td>
+<td>gateway ID</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>DM9200H</td>
+<td>目前系統時間(UTC)</td>
+</tr>
+<tr>
+<td>devicetype</td>
+<td>DM9200H</td>
+<td>目前只有DM9200H有IRM-201模組</td>
+</tr>
+<tr>
+<td>IRcommand</td>
+<td>NONE</td>
+<td>6:進入學習模式，7:退出學習模式，8執行按鍵功能</td>
+</tr>
+<tr>
+<td>KeySelect</td>
+<td>NONE</td>
+<td>KEY選擇(0-65)</td>
+</tr>
+<tr>
+<td>DeviceSelect</td>
+<td>NONE</td>
+<td>KEY DEVICE選擇(0-95)，每個DEVICE可以學習66個KEY</td>
+</tr>
+<tr>
+<td>handshake</td>
+<td>1</td>
+<td>交握旗標，用來判斷gateway是否否有正確執行IR COMMAND</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>已將COMMAND送到SERVER端</td>
+</tr>
+</tbody>
+</table>
+<p>Gateway收到IR Command後會將執行結果透過update_command_encode.php讓client端知道</p>
+<pre><code class="json">    {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;command&quot;:&quot;1&quot;,
+   &quot;timezone&quot;:&quot;+8&quot;,
+   &quot;info&quot;:
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:7,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:5}
+                      }
+         }
+   }
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>handshake 所代表的意義</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------2------------</td>
+<td>已進入學習模式，並已選擇要學習的KEY</td>
+</tr>
+<tr>
+<td>----------3------------</td>
+<td>當被學習的遙控器按鍵放開</td>
+</tr>
+<tr>
+<td>----------4------------</td>
+<td>學習失敗</td>
+</tr>
+<tr>
+<td>----------5------------</td>
+<td>成功離開學習</td>
+</tr>
+<tr>
+<td>----------6------------</td>
+<td>成功執行按鍵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key_1">執行KEY的步驟</h2>
+<ul>
+<li><code>update_command_encode.php</code></li>
+</ul>
+<pre><code class="json">   {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;info&quot;: 
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:8,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:1}
+                      }
+         }
+   }
+</code></pre>
+
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>cid</td>
+<td></td>
+<td>gateway ID</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>DM9200H</td>
+<td>目前系統時間(UTC)</td>
+</tr>
+<tr>
+<td>devicetype</td>
+<td>DM9200H</td>
+<td>目前只有DM9200H有IRM-201模組</td>
+</tr>
+<tr>
+<td>IRcommand</td>
+<td>NONE</td>
+<td>6:進入學習模式，7:退出學習模式，8執行按鍵功能</td>
+</tr>
+<tr>
+<td>KeySelect</td>
+<td>NONE</td>
+<td>KEY選擇(0-65)</td>
+</tr>
+<tr>
+<td>DeviceSelect</td>
+<td>NONE</td>
+<td>KEY DEVICE選擇(0-95)，每個DEVICE可以學習66個KEY</td>
+</tr>
+<tr>
+<td>handshake</td>
+<td>1</td>
+<td>交握旗標，用來判斷gateway是否否有正確執行IR COMMAND</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>已將COMMAND送到SERVER端</td>
+</tr>
+</tbody>
+</table>
+<p>Gateway收到IR Command後會將執行結果透過update_command_encode.php讓client端知道</p>
+<pre><code class="json">    {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;command&quot;:&quot;1&quot;,
+   &quot;timezone&quot;:&quot;+8&quot;,
+   &quot;info&quot;:
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:8,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:6}
+                      }
+         }
+   }
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>handshake 所代表的意義</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------2------------</td>
+<td>已進入學習模式，並已選擇要學習的KEY</td>
+</tr>
+<tr>
+<td>----------3------------</td>
+<td>當被學習的遙控器按鍵放開</td>
+</tr>
+<tr>
+<td>----------4------------</td>
+<td>學習失敗</td>
+</tr>
+<tr>
+<td>----------5------------</td>
+<td>成功離開學習</td>
+</tr>
+<tr>
+<td>----------6------------</td>
+<td>成功執行按鍵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key_2">儲存KEY資訊</h2>
+<ul>
+<li><code>slave_device_update.php</code> - 此API提供一個資料庫去儲存已設定過的KEY資訊</li>
+</ul>
+<pre><code class="json">   {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;mac&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-11-09 10:00:00&quot;,
+   &quot;info&quot;:[
+             {&quot;DeviceIndex&quot;:&quot;0&quot;,&quot;KeyIndex&quot;:&quot;1&quot;,&quot;KeyName&quot;:&quot;aaa&quot;,&quot; timestamp&quot;,&quot;2016-11-09 10:00:00&quot;},
+             {&quot;DeviceIndex&quot;:&quot;0&quot;,&quot;KeyIndex&quot;:&quot;2&quot;,&quot;KeyName&quot;:&quot;bbb&quot;,&quot; timestamp&quot;,&quot;2016-11-09 10:00:00&quot;}
+          ]
+   } 
+
 </code></pre></div>
         </div>
 
