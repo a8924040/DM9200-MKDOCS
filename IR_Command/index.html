@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>IR_HTTP_Command - LinuxGateway Command</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">LinuxGateway Command</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">UDPCommand</a>
+                </li>
+            
+            
+            
+                <li class="active">
+                    <a href="./">IR_HTTP_Command</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">IRCOMMAND <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../IR_command1/">aaaa</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../IR_command2/">2222</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="..">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../IR_command1/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#_1">流程</a></li>
+        
+            <li><a href="#key">學習KEY的步驟</a></li>
+        
+            <li><a href="#_2">退出學習的步驟</a></li>
+        
+            <li><a href="#key_1">執行KEY的步驟</a></li>
+        
+            <li><a href="#key_2">儲存KEY資訊</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="_1">流程</h1>
+<pre><code class="json">    下逹 command 至 Gateway 
+    +--------+       +----------------------------+  
+    |        |       | 更新 command JSON          |  
+    | Mobile +-----&gt; | update_command_encode.php  |  
+    +--------+       +----------------------------+  
+
+    Gateway 接收 comamnd :  
+    Gateway先利用show_command_timestamp.php 取得command 更新時間,  
+    若時間較新再利用show_command_encode.php 取得對Gateway所下逹命令,若時間就舊則不處理  
+
+    +---------+   +----------------------------+           +---------+   +------------------------+  
+    |         |   | 取得 command 下逹時間       | 時間較新   |         |   | 取得 command JSON      |  
+    | Gateway |--&gt;| show_command_timestamp.php |---------&gt; | Gateway |--&gt;| show_command_encode.php|  
+    +---------+   +-------+--------------------+           +---------+   +------------------------+        
+                                               |  時間較舊 +---------+  
+                                               +---------&gt; |  無動作 |  
+                                                           | Gateway |  
+                                                           +---------+  
+</code></pre>
+
+<h2 id="key">學習KEY的步驟</h2>
+<ul>
+<li><code>update_command_encode.php</code></li>
+</ul>
+<pre><code class="json">   {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;info&quot;: 
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:6,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:1}
+                      }
+         }
+   }
+</code></pre>
+
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>cid</td>
+<td></td>
+<td>gateway ID</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>DM9200H</td>
+<td>目前系統時間(UTC)</td>
+</tr>
+<tr>
+<td>devicetype</td>
+<td>DM9200H</td>
+<td>目前只有DM9200H有IRM-201模組</td>
+</tr>
+<tr>
+<td>IRcommand</td>
+<td>NONE</td>
+<td>6:進入學習模式，7:退出學習模式，8執行按鍵功能</td>
+</tr>
+<tr>
+<td>KeySelect</td>
+<td>NONE</td>
+<td>KEY選擇(0-65)</td>
+</tr>
+<tr>
+<td>DeviceSelect</td>
+<td>NONE</td>
+<td>KEY DEVICE選擇(0-95)，每個DEVICE可以學習66個KEY</td>
+</tr>
+<tr>
+<td>handshake</td>
+<td>1</td>
+<td>交握旗標，用來判斷gateway是否否有正確執行IR COMMAND</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>已將COMMAND送到SERVER端</td>
+</tr>
+</tbody>
+</table>
+<p>Gateway收到IR Command後會將執行結果透過update_command_encode.php讓client端知道</p>
+<pre><code class="json">    {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;command&quot;:&quot;1&quot;,
+   &quot;timezone&quot;:&quot;+8&quot;,
+   &quot;info&quot;:
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:6,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:2}
+                      }
+         }
+   }
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>handshake 所代表的意義</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------2------------</td>
+<td>已進入學習模式，並已選擇要學習的KEY</td>
+</tr>
+<tr>
+<td>----------3------------</td>
+<td>當被學習的遙控器按鍵放開</td>
+</tr>
+<tr>
+<td>----------4------------</td>
+<td>學習失敗</td>
+</tr>
+<tr>
+<td>----------5------------</td>
+<td>成功離開學習</td>
+</tr>
+<tr>
+<td>----------6------------</td>
+<td>成功執行按鍵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">退出學習的步驟</h2>
+<ul>
+<li><code>update_command_encode.php</code></li>
+</ul>
+<pre><code class="json">   {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;info&quot;: 
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:7,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:1}
+                      }
+         }
+   }
+</code></pre>
+
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>cid</td>
+<td></td>
+<td>gateway ID</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>DM9200H</td>
+<td>目前系統時間(UTC)</td>
+</tr>
+<tr>
+<td>devicetype</td>
+<td>DM9200H</td>
+<td>目前只有DM9200H有IRM-201模組</td>
+</tr>
+<tr>
+<td>IRcommand</td>
+<td>NONE</td>
+<td>6:進入學習模式，7:退出學習模式，8執行按鍵功能</td>
+</tr>
+<tr>
+<td>KeySelect</td>
+<td>NONE</td>
+<td>KEY選擇(0-65)</td>
+</tr>
+<tr>
+<td>DeviceSelect</td>
+<td>NONE</td>
+<td>KEY DEVICE選擇(0-95)，每個DEVICE可以學習66個KEY</td>
+</tr>
+<tr>
+<td>handshake</td>
+<td>1</td>
+<td>交握旗標，用來判斷gateway是否否有正確執行IR COMMAND</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>已將COMMAND送到SERVER端</td>
+</tr>
+</tbody>
+</table>
+<p>Gateway收到IR Command後會將執行結果透過update_command_encode.php讓client端知道</p>
+<pre><code class="json">    {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;command&quot;:&quot;1&quot;,
+   &quot;timezone&quot;:&quot;+8&quot;,
+   &quot;info&quot;:
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:7,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:5}
+                      }
+         }
+   }
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>handshake 所代表的意義</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------2------------</td>
+<td>已進入學習模式，並已選擇要學習的KEY</td>
+</tr>
+<tr>
+<td>----------3------------</td>
+<td>當被學習的遙控器按鍵放開</td>
+</tr>
+<tr>
+<td>----------4------------</td>
+<td>學習失敗</td>
+</tr>
+<tr>
+<td>----------5------------</td>
+<td>成功離開學習</td>
+</tr>
+<tr>
+<td>----------6------------</td>
+<td>成功執行按鍵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key_1">執行KEY的步驟</h2>
+<ul>
+<li><code>update_command_encode.php</code></li>
+</ul>
+<pre><code class="json">   {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;info&quot;: 
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:8,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:1}
+                      }
+         }
+   }
+</code></pre>
+
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>cid</td>
+<td></td>
+<td>gateway ID</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>DM9200H</td>
+<td>目前系統時間(UTC)</td>
+</tr>
+<tr>
+<td>devicetype</td>
+<td>DM9200H</td>
+<td>目前只有DM9200H有IRM-201模組</td>
+</tr>
+<tr>
+<td>IRcommand</td>
+<td>NONE</td>
+<td>6:進入學習模式，7:退出學習模式，8執行按鍵功能</td>
+</tr>
+<tr>
+<td>KeySelect</td>
+<td>NONE</td>
+<td>KEY選擇(0-65)</td>
+</tr>
+<tr>
+<td>DeviceSelect</td>
+<td>NONE</td>
+<td>KEY DEVICE選擇(0-95)，每個DEVICE可以學習66個KEY</td>
+</tr>
+<tr>
+<td>handshake</td>
+<td>1</td>
+<td>交握旗標，用來判斷gateway是否否有正確執行IR COMMAND</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>已將COMMAND送到SERVER端</td>
+</tr>
+</tbody>
+</table>
+<p>Gateway收到IR Command後會將執行結果透過update_command_encode.php讓client端知道</p>
+<pre><code class="json">    {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-09-20 20:01:29&quot;,
+   &quot;command&quot;:&quot;1&quot;,
+   &quot;timezone&quot;:&quot;+8&quot;,
+   &quot;info&quot;:
+         {
+         &quot;devicetype&quot;:&quot;DM9200H&quot;,
+         &quot;contentinfo&quot;:
+                      {
+                      &quot;IRcommand&quot;:8,
+                      &quot;KeySelect&quot;:1,
+                      &quot;DeviceSelect&quot;:0,
+                      &quot;handshake&quot;:6}
+                      }
+         }
+   }
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>handshake 所代表的意義</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------2------------</td>
+<td>已進入學習模式，並已選擇要學習的KEY</td>
+</tr>
+<tr>
+<td>----------3------------</td>
+<td>當被學習的遙控器按鍵放開</td>
+</tr>
+<tr>
+<td>----------4------------</td>
+<td>學習失敗</td>
+</tr>
+<tr>
+<td>----------5------------</td>
+<td>成功離開學習</td>
+</tr>
+<tr>
+<td>----------6------------</td>
+<td>成功執行按鍵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key_2">儲存KEY資訊</h2>
+<ul>
+<li><code>slave_device_update.php</code> - 此API提供一個資料庫去儲存已設定過的KEY資訊</li>
+</ul>
+<pre><code class="json">   {
+   &quot;userid&quot;:&quot;benny_wang@sunmoretek.com&quot;,
+   &quot;cid&quot;:&quot;44334c4f92c4&quot;,
+   &quot;mac&quot;:&quot;44334c4f92c4&quot;,
+   &quot;timestamp&quot;:&quot;2016-11-09 10:00:00&quot;,
+   &quot;info&quot;:[
+             {&quot;DeviceIndex&quot;:&quot;0&quot;,&quot;KeyIndex&quot;:&quot;1&quot;,&quot;KeyName&quot;:&quot;aaa&quot;,&quot; timestamp&quot;,&quot;2016-11-09 10:00:00&quot;},
+             {&quot;DeviceIndex&quot;:&quot;0&quot;,&quot;KeyIndex&quot;:&quot;2&quot;,&quot;KeyName&quot;:&quot;bbb&quot;,&quot; timestamp&quot;,&quot;2016-11-09 10:00:00&quot;}
+          ]
+   } 
+
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

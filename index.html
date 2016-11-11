@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+	<title>LinuxGateway Command</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">LinuxGateway Command</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">UDPCommand</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="IR_Command/">IR_HTTP_Command</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">IRCOMMAND <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="IR_command1/">aaaa</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="IR_command2/">2222</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="IR_Command/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#udp-command">UDP Command</a></li>
+        
+            <li><a href="#command-1">Command 1</a></li>
+        
+            <li><a href="#command-2">Command 2</a></li>
+        
+            <li><a href="#command-3">Command 3</a></li>
+        
+            <li><a href="#command-4">Command 4</a></li>
+        
+            <li><a href="#command-5">Command 5</a></li>
+        
+            <li><a href="#command-6">Command 6(測試用)</a></li>
+        
+            <li><a href="#command-7">Command 7(測試用)</a></li>
+        
+            <li><a href="#command-8">Command 8</a></li>
+        
+            <li><a href="#command-9">Command 9</a></li>
+        
+            <li><a href="#command-10">Command 10</a></li>
+        
+            <li><a href="#command-12">Command 12</a></li>
+        
+            <li><a href="#command-13">Command 13</a></li>
+        
+            <li><a href="#command-14">Command 14</a></li>
+        
+            <li><a href="#command-15">Command 15</a></li>
+        
+            <li><a href="#command-16">Command 16</a></li>
+        
+            <li><a href="#command-17">Command 17</a></li>
+        
+            <li><a href="#command-18">Command 18(測試用)</a></li>
+        
+            <li><a href="#command-19">Command 19(測試用)</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="udp-command">UDP Command</h1>
+<ul>
+<li><code>command  0</code> - 列印出資料庫裡的DEVICE &amp; LINK 表.</li>
+<li><code>command  1</code> - 開啟 M02(Zigbee Module) JOIN 功能60秒.</li>
+<li><code>command  2</code> - 綁定帳號.</li>
+<li><code>command  3</code> - 註冊新帳號.</li>
+<li><code>command  4</code> - 確認碼輸入.</li>
+<li><code>command  5</code> - 解除綁定.</li>
+<li><code>command  6</code> - 進入IRM-201(IR Module) 學習功能.</li>
+<li><code>command  7</code> - 退出IRM-2-1(IR Module) 學習功能.</li>
+<li><code>command  8</code> - IRM-201(IR Module) 控制協定.</li>
+<li><code>command  9</code> - 啟動OTA功能.</li>
+<li><code>command 10</code> - 掃描無線網路(WIFI SCAN).</li>
+<li><code>command 11</code>  - 保留.</li>
+<li><code>command 12</code>  - 查詢CID及IP.</li>
+<li><code>command 13</code>  - 設定無線網路(WIFI SETTING).</li>
+<li><code>command 14</code>  - 查詢CID.</li>
+<li><code>command 15</code>  - 忘記密碼，進行密碼修改.</li>
+<li><code>command 16</code>  - 輸入驗證碼及新的密碼.</li>
+<li><code>command 17</code>  - 刪除ZIGBEE裝置.</li>
+<li><code>command 18</code>  - 將WIFI設定為AP MODE.</li>
+<li><code>command 19</code>  - 將WIFI設定為STA MODE.</li>
+</ul>
+<h2 id="command-1">Command 1</h2>
+<pre><code>{"command":"1"}
+</code></pre>
+<h2 id="command-2">Command 2</h2>
+<pre><code>{
+"command":"2",
+"userid":"cynthiawang0418@gmail.com",
+"password":"12345678"
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>password</td>
+<td>NONE</td>
+<td>使用者密碼</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok</td>
+<td>NONE</td>
+<td>綁定成功</td>
+</tr>
+<tr>
+<td>no device</td>
+<td>NONE</td>
+<td>找無此機器(已被其他帳號綁定)</td>
+</tr>
+<tr>
+<td>error</td>
+<td>NONE</td>
+<td>密碼錯誤 或 帳號與密碼無法匹配</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-3">Command 3</h2>
+<pre><code>{
+"command":"3",
+"userid":"cynthiawang0418@gmail.com",
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok</td>
+<td>NONE</td>
+<td>執行成功</td>
+</tr>
+<tr>
+<td>user error</td>
+<td>NONE</td>
+<td>帳號存在</td>
+</tr>
+<tr>
+<td>device error</td>
+<td>NONE</td>
+<td>機器己綁定</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-4">Command 4</h2>
+<pre><code>{
+"command":"4",
+"userid":"cynthiawang0418@gmail.com",
+"check_code":"1234",
+"password":"12345678"
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>check_code</td>
+<td>NONE</td>
+<td>當執行COMMAND 3 之後，SERVER會MIAL確認碼</td>
+</tr>
+<tr>
+<td>password</td>
+<td>NONE</td>
+<td>輸入使用者所設定的密碼</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok</td>
+<td>NONE</td>
+<td>執行成功</td>
+</tr>
+<tr>
+<td>user error</td>
+<td>NONE</td>
+<td>帳號存在</td>
+</tr>
+<tr>
+<td>device error</td>
+<td>NONE</td>
+<td>機器己綁定</td>
+</tr>
+<tr>
+<td>check_code error</td>
+<td>NONE</td>
+<td>確認碼錯誤</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-5">Command 5</h2>
+<pre><code>{
+"command":"5",
+"device_id":"44334c4f92c4"
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_id</td>
+<td>NONE</td>
+<td>gateway的序號</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok</td>
+<td>NONE</td>
+<td>解除綁定成功</td>
+</tr>
+<tr>
+<td>user error</td>
+<td>NONE</td>
+<td>此gateway 無綁定</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-6">Command 6(測試用)</h2>
+<pre><code>{
+"command":"6",
+}
+</code></pre>
+<p>將IRM-201設定為學習模式</p>
+<h2 id="command-7">Command 7(測試用)</h2>
+<pre><code>{
+"command":"7",
+}
+</code></pre>
+<p>將IRM-201退出學習模式</p>
+<h2 id="command-8">Command 8</h2>
+<pre><code class="json">     {
+     &quot;command&quot;:&quot;8&quot;,
+     &quot;info&quot;:
+           {
+           &quot;devicetype&quot;:&quot;DM9200H&quot;,
+           &quot;contentinfo&quot;
+                        {
+                         &quot;IRcommand&quot;:8,
+                         &quot;KeySelect&quot;:1,
+                         &quot;DeviceSelect&quot;:0
+                        }
+            }
+     }
+</code></pre>
+
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>devicetype</td>
+<td>DM9200H</td>
+<td>目前只有DM9200H有IRM-201模組</td>
+</tr>
+<tr>
+<td>IRcommand</td>
+<td>NONE</td>
+<td>6:進入學習模式，7:退出學習模式，8執行按鍵功能</td>
+</tr>
+<tr>
+<td>KeySelect</td>
+<td>NONE</td>
+<td>KEY選擇(0-65)</td>
+</tr>
+<tr>
+<td>DeviceSelect</td>
+<td>NONE</td>
+<td>KEY DEVICE選擇(0-95)，每個DEVICE可以學習66個KEY</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INTO LRN OK</td>
+<td>NONE</td>
+<td>進入學習模式</td>
+</tr>
+<tr>
+<td>INTO LRN FAIL</td>
+<td>NONE</td>
+<td>進入學習模式失敗</td>
+</tr>
+<tr>
+<td>LRN OK</td>
+<td>NONE</td>
+<td>學習按鍵/裝置(KEY &amp; DEVICE)已設定成功</td>
+</tr>
+<tr>
+<td>LRN FAIL</td>
+<td>NONE</td>
+<td>學習按鍵輸入失敗</td>
+</tr>
+<tr>
+<td>LRN KEY RELEASE</td>
+<td>NONE</td>
+<td>偵測到學習按鍵已經放開</td>
+</tr>
+<tr>
+<td>EXIT LRN OK</td>
+<td>NONE</td>
+<td>離開學習完成</td>
+</tr>
+<tr>
+<td>PRESS OK</td>
+<td>NONE</td>
+<td>執行按鍵成功</td>
+</tr>
+<tr>
+<td>IR LRN TIMEOUT</td>
+<td>NONE</td>
+<td>學習逾時，15秒內沒有接收到要學習的遙控器訊號</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-9">Command 9</h2>
+<pre><code> {
+ "command":"9",
+ }
+</code></pre>
+<p>系統更新，當收到此COMMAND後，會將系統更新的旗標舉起，這時候系統就會連到更新SERVER去檢查是否有更新的資訊，如果有就會開始下載並將系統進行更新<br />
+1.POST mac=CID &amp; model=Hi3518-TEST 到OAT SERVER(http://pistory2013.com/android_APK/2014model/TEST/online.php)<br />
+2.OTA SERVER會回傳 version &amp; file path &amp; md5_root &amp; md5_uImg &amp; md5_data<br />
+3.去OAT SERVER提供的file path去下載rootfs_64k.jffs2 &amp; uImage &amp; data_64k.jffs2. &amp; benny.sh &amp; mtd_debug<br />
+4.比對檔案MD5是否正確<br />
+5.運行benny.sh EX:benny.sh datafs_64k.jffs2  </p>
+<h2 id="command-10">Command 10</h2>
+<pre><code>{
+"command":"10",
+}
+</code></pre>
+<p>系統會去運行/mnt/data/WifiScan.cgi，並將SCAN的結果輸出到/mnt/data/wifi_info  </p>
+<p>系統會以JSON格式返回wifi_info內容，如下</p>
+<pre><code class="json">     {
+     &quot;APINFO&quot;:[  
+              {&quot;ESSID&quot;:&quot;dlink-3A10&quot;,&quot;Encryption&quot;:&quot;on&quot;,&quot;Quality&quot;:&quot;100/100&quot;,&quot;EncryptMode0&quot;:&quot;WPA&quot;,&quot;Group0&quot;:&quot;TKIP&quot;,&quot;PairwiseCiphers00&quot;:&quot;CCMP&quot;,&quot;PairwiseCiphers01&quot;:&quot;TKIP&quot;,&quot;AuthenticationSuites0&quot;:&quot;PSK&quot;,&quot;EncryptMode1&quot;:&quot;WPA2&quot;,&quot;Group1&quot;:&quot;TKIP&quot;,&quot;PairwiseCiphers10&quot;:&quot;CCMP&quot;,&quot;PairwiseCiphers11&quot;:&quot;TKIP&quot;,&quot;AuthenticationSuites1&quot;:&quot;PSK&quot;},  
+              {&quot;ESSID&quot;:&quot;SUNNIC&quot;,&quot;Encryption&quot;:&quot;on&quot;,&quot;Quality&quot;:&quot;37/100 &quot;,&quot;EncryptMode0&quot;:&quot;WPA2&quot;,&quot;Group0&quot;:&quot;CCMP&quot;,&quot;PairwiseCiphers00&quot;:&quot;CCMP&quot;,&quot;PairwiseCiphers01&quot;:&quot;&quot;,&quot;AuthenticationSuites0&quot;:&quot;802.1x&quot;,&quot;EncryptMode1&quot;:&quot;&quot;,&quot;Group1&quot;:&quot;&quot;,&quot;PairwiseCiphers10&quot;:&quot;&quot;,&quot;PairwiseCiphers11&quot;:&quot;&quot;,&quot;AuthenticationSuites1&quot;:&quot;&quot;}  
+              ]  
+     }
+</code></pre>
+
+<h2 id="command-12">Command 12</h2>
+<p>使用廣播方式去獲取同網域上DM9200的 CID &amp; IP  </p>
+<pre><code>{
+"command":"12",
+}
+</code></pre>
+<p>Response JSON format</p>
+<pre><code class="json">    {
+    &quot;CID&quot;:&quot;xxxxxxxxxxxx&quot;,
+    &quot;IP&quot;:&quot;xxx.xxx.xxx.xxx&quot;
+    }
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CID</td>
+<td>NONE</td>
+<td>gateway ID</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>NONE</td>
+<td>IP Address</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-13">Command 13</h2>
+<p>系統會將WIFI設為STA MODE並進行WIFI連線，為了CHECK系統有連到使用者指定網路，只用者必須將CLIENT端切換成同網段，然後下Command 12去確認gateway已連上USER指定AP，如果沒有在90秒內
+確認，系統會自動切換回AP MODE  </p>
+<pre><code class="json">    {
+    &quot;command&quot;:&quot;13&quot;,
+    &quot;ESSID&quot;:&quot;BuffaloBenny&quot;,
+    &quot;Encryption&quot;:&quot;on&quot;,
+    &quot;EncryptMode0&quot;:&quot;WPA&quot;,
+    &quot;Group0&quot;:&quot;&quot;,
+    &quot;PairwiseCiphers00&quot;:&quot;&quot;,
+    &quot;PairwiseCiphers01&quot;:&quot;&quot;,
+    &quot;AuthenticationSuites0&quot;:&quot;PSK&quot;,
+    &quot;EncryptMode1&quot;:&quot;&quot;,
+    &quot;Group1&quot;:&quot;&quot;,
+    &quot;PairwiseCiphers10&quot;:&quot;&quot;,
+    &quot;PairwiseCiphers11&quot;:&quot;&quot;,
+    &quot;AuthenticationSuites1&quot;:&quot;&quot;,
+    &quot;WifiPassword&quot;:&quot;1234567890&quot;
+    } 
+</code></pre>
+
+<p>Required JSON Parameter<br />
+須將COMMAND 10 所獲的的WIFI INFO中所有參數傳進gateway，並多加欲連線AP的密碼  </p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WifiPassword</td>
+<td>NONE</td>
+<td>AP 的密碼</td>
+</tr>
+</tbody>
+</table>
+<p>系統會將WIFI設為STA MODE並進行WIFI連線，為了CHECK系統有連到使用者指定網路，只用者必須將CLIENT端切換成同網段，然後下Command 12去確認gateway已連上USER指定AP，如果沒有在90秒內確認，系統會自動切換回AP MODE  </p>
+<h2 id="command-14">Command 14</h2>
+<p>在AP MODE可以透過此COMMAND去獲取gateway ID</p>
+<pre><code>{
+"command":"14",
+}
+</code></pre>
+<p>Response JSON format</p>
+<pre><code class="json">    {
+    &quot;CID&quot;:&quot;xxxxxxxxxxxx&quot;,
+    }
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CID</td>
+<td>NONE</td>
+<td>gateway ID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-15">Command 15</h2>
+<p>忘記使用者密碼時可以透過此COMMAND去更換密碼</p>
+<pre><code>{
+"command":"15",
+"userid":"cynthiawang0418@gmail.com"
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+</tbody>
+</table>
+<p>Response </p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>執行成功</td>
+</tr>
+<tr>
+<td>user error</td>
+<td>NONE</td>
+<td>帳號不存在</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-16">Command 16</h2>
+<p>當使用COMMAND 15後，系統會發送驗證碼到使用者註冊的MAIL，再透過此COMMAND去修改使用者密碼</p>
+<pre><code>{
+"command":"16",
+"userid":"cynthiawang0418@gmail.com",
+"check_code":"xxxx",
+"change_password":"xxxxxxxx"
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td>NONE</td>
+<td>使用者帳號</td>
+</tr>
+<tr>
+<td>check_code</td>
+<td>NONE</td>
+<td>確認碼</td>
+</tr>
+<tr>
+<td>change_password</td>
+<td>NONE</td>
+<td>設定新的密碼</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>執行成功</td>
+</tr>
+<tr>
+<td>user error</td>
+<td>NONE</td>
+<td>帳號不存在</td>
+</tr>
+<tr>
+<td>check_code error</td>
+<td>NONE</td>
+<td>確認碼錯誤</td>
+</tr>
+<tr>
+<td>session error</td>
+<td>NONE</td>
+<td>網路SESSION錯誤</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-17">Command 17</h2>
+<pre><code>{
+"command":"17",
+"DeviceNo":"1"
+}
+</code></pre>
+<p>Required JSON Parameter</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DeviceNo</td>
+<td>NONE</td>
+<td>每個ZIGBEE裝置都會配發一個Number，可以透過此COMMAND去刪除改裝置</td>
+</tr>
+</tbody>
+</table>
+<p>Response</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OK</td>
+<td>NONE</td>
+<td>執行成功</td>
+</tr>
+<tr>
+<td>error</td>
+<td>NONE</td>
+<td>沒有該裝置號碼可以刪除</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-18">Command 18(測試用)</h2>
+<p>運行/mnt/data/wifi_script_ap ， 將系統切換成AP MODE  </p>
+<pre><code>{
+"command":"18"
+}
+</code></pre>
+<h2 id="command-19">Command 19(測試用)</h2>
+<p>運行/mnt/data/wifi_script_ ， 將系統切換成STA MODE  </p>
+<pre><code>{
+"command":"19"
+}
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+        <script src="./js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
